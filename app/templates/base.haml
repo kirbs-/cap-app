@@ -1,0 +1,25 @@
+<!doctype html>
+%html
+    %head
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/3/cosmo/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
+    %body
+        %nav.navbar.navbar-default
+            %div
+                %div.navbar-brand
+                    Calypso CSV App
+
+        -with messages = get_flashed_messages()
+            -if messages
+                %div.alert.alert-warning#flash
+                    -for message in messages
+                        %span
+                            {{message}}
+
+        -block content
+
+</html>
