@@ -4,36 +4,18 @@
 
     %div.container-fluid
         %div.row-fluid
-            %div.col-md-4.col-md-offset-2
-                %h2.text-center
-                    Projects
-                %a href='/rate_picture' class='btn btn-info btn-block'
-                    Rate TV Failures
-                %a href='/complaint' class='btn btn-info btn-block'
-                    Complaint Prediction Engine
-                %a href='/bot' class='btn btn-info btn-block'
-                    Hackathon Bot Demo
-                %a href='/detractor' class='btn btn-info btn-block'
-                    Detractor Prediction Engine
-                %a href='/network_advisor' class='btn btn-info btn-block'
-                    Network Advisor
-                %a href='/context_advisor' class='btn btn-info btn-block'
-                    Context Advisor
-                %a href='/parts_rec' class='btn btn-info btn-block'
-                    Parts Recommendation Service
-            %div.col-md-4
-                %h2.text-center
-                    Check a picture
-                %form.form-horizontal
-                    %div.form-group
-                        %label.col-md-3.control-label for='picture'
-                            File Name:
-                        %div.col-md-9
-                            %input.form-control id='picture'
-
-                    %button type='submit' class='btn btn-primary btn-block'
-                        Process
+            %div.col-md-10.text-center
+                %h3 << Uploaded Files
+            %div.col-md-2.text-right
+                %a.btn.btn-primary id='upload-btn'
+                    Upload
 
         %div.row-fluid
-        %div.grid
-            %div.text-center#grid
+            %div.col-md-12 id='main-table'
+                %table
+                    %tr
+                        %th << File Name
+                        %th 
+                    -block file_rows
+
+            %div.col-md-8.hidden id='stats-table'

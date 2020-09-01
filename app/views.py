@@ -5,6 +5,13 @@ import os
 from flask import render_template, request, redirect, abort, flash, jsonify, url_for
 
 
+@app.route('/')
+@app.route('/index')
+def index():
+    """Main page - Display all uploaded files."""
+    return render_template('index.haml', files=models.UploadFile.all)
+
+
 @app.route('/upload', methods=['POST'])
 def upload_File():
     """File upload handler.
@@ -24,7 +31,7 @@ def upload_File():
             flash('No selected file')
             return 'no selected file'
         if file: # and allowed_file(file.filename):
-            # filename = secure_filename(file.filename)
+            filename = secure_filename(file.filename)
             filename = file.filename
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
