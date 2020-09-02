@@ -6,7 +6,7 @@ Feature: index page
             | foo.csv   |
             | bar.csv   |
         When a user navigates to home page
-        Then user should see "bar.png"
+        Then user should see "bar.csv"
 
     Scenario: Clicking "Upload" button prompts upload dialog
         Given a user navigates to home page
