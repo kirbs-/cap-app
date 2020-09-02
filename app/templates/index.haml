@@ -1,21 +1,41 @@
 -extends "base.haml"
 
 -block content
+    %script src="static/upload.js"
 
     %div.container-fluid
         %div.row-fluid
             %div.col-md-10.text-center
                 %h3 << Uploaded Files
             %div.col-md-2.text-right
-                %a.btn.btn-primary id='upload-btn'
+                %button.btn.btn-primary id='upload-btn' data-toggle='modal', data-target='#upload-modal'
                     Upload
 
         %div.row-fluid
             %div.col-md-12 id='main-table'
-                %table
+                %table id='uploads_table'
                     %tr
                         %th << File Name
                         %th 
-                    -block file_rows
+                    -for f in files:
+                        %tr
+                            %td << {{ f.file_name }}
+                            %td id='{{ f.id }}'
 
             %div.col-md-8.hidden id='stats-table'
+
+    %div.modal.fade tabindex='-1' role='dialog' id='upload-modal'
+        %div.modal-dialog
+            %div.model-content
+                %div.modal-header
+                    %div.modal-title
+                        %h4 << Select a file to upload
+                %div.modal-body
+                    %form class='form-horizontal' action='/upload' method=post id='upload-form' enctype='multipart/form-data'
+                        %input type="file" name="file" id="file" class='form-control'
+                                
+                %div.modal-footer
+                    %button.btn.btn-default type='button' data-dismiss='modal'
+                        Cancel
+                    %button.btn.btn-primary type='button' id='upload-form-btn'
+                        Upload
