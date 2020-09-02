@@ -5,10 +5,10 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'database', 'app.db')
 
 # test db - localhost flask app; db running in container
-SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://airflow:airflow@localhost:5432'
+SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://airflow:airflow@localhost:5432/postgres'
 
 # prod db - flask app and db running in containers
-# SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://airflow:airflow@db:5432'
+# SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://airflow:airflow@db:5432/postgres'
 
 OTP_SECRET = 'Wdj5ccVm4pGbDy'
 DEBUG = True
