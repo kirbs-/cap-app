@@ -28,9 +28,9 @@ $(document).ready(() => {
         $('#upload-modal').modal('hide');
     });
 
-    // intercept display link click and load display CSV via async
+    // intercept display and stats link clicks and load display CSV via async
     // using the icon click we need to grab the url from the parent a tag
-    $(document).on('click', '.glyphicon-th', evt => {
+    $(document).on('click', '.glyphicon-th, .glyphicon-stats', evt => {
         // stop link click from propagating.
         evt.preventDefault();
         
@@ -39,6 +39,7 @@ $(document).ready(() => {
             success: update_content_display,
         })
     });
+    
 });
 
 

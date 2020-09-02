@@ -57,10 +57,18 @@ class UploadFile(db.Model):
     def df(self):
         """Load csv into memory.
 
+        Also performs limited data cleaning
+            - Fills blank state values with "BLANK"
+            - Converts "date" column to datetime dtype
+
         Returns:
             DataFrame: CSV file
         """
-        return pd.read_csv(self.absolute_path)
+        return pd.read_csv(
+            self.absolute_path, 
+            parse_dates=['date'], 
+            infer_datetime_format=True
+        ).fillna({'state': 'BLANK'})
 
     def head(self, **kwargs):
         """Returns rows from begining of CSV to display.
@@ -80,4 +88,4 @@ class UploadFile(db.Model):
         Returns:
             [type]: [description]
         """
-        return self.df
+        return self.df.groupby(self.df.date.dt.year).agg({'guid': 'count'}).sort_values(by='guid', ascending=False)

@@ -46,7 +46,6 @@ def step_impl(context, name):
 def step_impl(context, text):
     # wait for a few seconds for async calls to load
     ele = WebDriverWait(context.browser, 5).until(EC.visibility_of_element_located((By.XPATH, f'//*[contains(text(), "{text}")]')))
-    # ele = context.browser.find_element_by_xpath(f'//*[contains(text(), "{text}")]')
     assert_that(ele.text, equal_to(text))
 
 @when(u'user selects "example.csv" in file browser')

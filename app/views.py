@@ -64,3 +64,9 @@ def dislay_csv(file_name):
     See https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.DataFrame.to_html.html
     """
     return models.UploadFile.find_by_name(file_name).head().to_html(classes='table', index=False)
+
+
+@app.route('/stats/<file_name>')
+def stats(file_name):
+    """Fetch yearly aggregate counts for display."""
+    return models.UploadFile.find_by_name(file_name).agg_by_year().to_html(classes='table')

@@ -31,10 +31,10 @@
                                     
                                     ;show csv table button
                                     %a href='/display-csv/{{ f.file_name }}'
-                                        %span.glyphicon.glyphicon-th << Dispay
+                                        %span.glyphicon.glyphicon-th << Display
 
                                     ;show stats button
-                                    %a href='/stats?file_name={{ f.file_name }}'
+                                    %a href='/stats/{{ f.file_name }}'
                                         %span.glyphicon.glyphicon-stats << Stats
         
         %div.row-fluid
