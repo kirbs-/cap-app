@@ -1,7 +1,5 @@
 Feature: index page
 
-    
-
     Scenario: Uploaded files exist on index page
         Given these uploaded files exist
             | file_name |
@@ -31,3 +29,5 @@ Feature: index page
             | bar.csv   |
         When user clicks "bar.csv" text
         Then user should see download dialog
+
+    
