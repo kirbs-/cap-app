@@ -1,4 +1,4 @@
-;Landing page template
+;Landing page template using HAML and Bootstrap 3
 -extends "base.haml"
 
 -block content
@@ -14,13 +14,13 @@
 
         %div.row-fluid
             %div.col-md-12 id='main-table'
-                %table.table id='uploads_table'
+                %table.table
                     %thead
                         %tr
                             %th << File Name
                             %th 
-                    %tbody
-                        ; loop through all files. Dispaly file name and options on hover
+                    %tbody id-'uploads_table'
+                        ; loop through all files. Display file name and options on hover
                         -for f in files:
                             %tr
                                 %td << {{ f.file_name }}

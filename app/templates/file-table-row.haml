@@ -1,4 +1,15 @@
- -for f in files:
+-for f in files:
     %tr
         %td << {{ f.file_name }}
-        %td id='{{ f.id }}'
+        %td
+            ;download button
+            %a href='/download?file_name={{ f.file_name }}'
+                %span.glyphicon.glyphicon-download-alt << Download
+            
+            ;show csv table button
+            %a href='/display-csv/{{ f.file_name }}'
+                %span.glyphicon.glyphicon-th << Display
+
+            ;show stats button
+            %a href='/stats/{{ f.file_name }}'
+                %span.glyphicon.glyphicon-stats << Stats
