@@ -1,0 +1,18 @@
+version: '3'
+services:
+    db:
+        restart: always
+        image: postgres
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: airflow
+            POSTGRES_PASSWORD: airflow
+            POSTGRES_DB: airflow
+            POSTGRES_PORT: 5432
+    # app:
+    #     build: .
+    #     ports:
+    #         - "5000:5000"
+    #     depends_on:
+    #         - db
