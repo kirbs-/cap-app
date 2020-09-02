@@ -23,11 +23,8 @@ Feature: index page
 
     Scenario: user downloads file
         Given a user navigates to home page
-        and these uploaded files exist 
-            | file_name |
-            | foo.csv   |
-            | bar.csv   |
-        When user clicks "bar.csv" text
+        and "example.csv" exists
+        When user clicks "Download" icon
         Then user should see download dialog
 
     
