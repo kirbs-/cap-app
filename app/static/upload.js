@@ -27,6 +27,18 @@ $(document).ready(() => {
 
         $('#upload-modal').modal('hide');
     });
+
+    // intercept display link click and load display CSV via async
+    // using the icon click we need to grab the url from the parent a tag
+    $(document).on('click', '.glyphicon-th', evt => {
+        // stop link click from propagating.
+        evt.preventDefault();
+        
+        $.get({
+            url: evt.target.parentElement.href, // grab url from event target's parent
+            success: update_content_display,
+        })
+    });
 });
 
 
@@ -37,12 +49,17 @@ $(document).ready(() => {
     
 // }
 
-const add_upload_file_row = html => {
+let add_upload_file_row = html => {
     // append HTML partial to 'main-table'
     $('#main-table').append(html);
 }
 
-// const show_error_message = data => [
-//     // display text in error flash
+let update_content_display = html => {
+    // replace content table html
+    let table = $('#content-table')
+    table.html(html);
 
-// ]
+    // unhide div
+    table.removeClass('hidden')
+
+}

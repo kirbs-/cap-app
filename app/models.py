@@ -6,6 +6,7 @@ import traceback
 from datetime import datetime
 import uuid
 from werkzeug.utils import secure_filename
+import pandas as pd
 
 
 class UploadFile(db.Model):
@@ -42,7 +43,6 @@ class UploadFile(db.Model):
         """Returns absolute path of file."""
         return os.path.join(config.UPLOAD_FOLDER, self.file_name)
 
-
     def save(self):
         """Save upload file object to db."""
         # update
@@ -53,4 +53,31 @@ class UploadFile(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    @property
+    def df(self):
+        """Load csv into memory.
 
+        Returns:
+            DataFrame: CSV file
+        """
+        return pd.read_csv(self.absolute_path)
+
+    def head(self, **kwargs):
+        """Returns rows from begining of CSV to display.
+
+        Args:
+            rows (int, optional): number of rows to display. Defaults to 20.
+
+        Returns:
+            DataFrame: Dataframe limited to number of rows.
+        """
+        rows_to_display = kwargs.get('rows_to_display', 20)
+        return self.df.head(rows_to_display)
+
+    def agg_by_year(self):
+        """[summary]
+
+        Returns:
+            [type]: [description]
+        """
+        return self.df

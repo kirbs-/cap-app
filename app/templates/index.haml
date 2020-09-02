@@ -1,3 +1,4 @@
+;Landing page template
 -extends "base.haml"
 
 -block content
@@ -13,17 +14,33 @@
 
         %div.row-fluid
             %div.col-md-12 id='main-table'
-                %table id='uploads_table'
-                    %tr
-                        %th << File Name
-                        %th 
-                    -for f in files:
+                %table.table id='uploads_table'
+                    %thead
                         %tr
-                            %td << {{ f.file_name }}
-                            %td id='{{ f.id }}'
+                            %th << File Name
+                            %th 
+                    %tbody
+                        ; loop through all files. Dispaly file name and options on hover
+                        -for f in files:
+                            %tr
+                                %td << {{ f.file_name }}
+                                %td
+                                    ;download button
+                                    %a href='/download?file_name={{ f.file_name }}'
+                                        %span.glyphicon.glyphicon-download-alt << Download
+                                    
+                                    ;show csv table button
+                                    %a href='/display-csv/{{ f.file_name }}'
+                                        %span.glyphicon.glyphicon-th << Dispay
 
-            %div.col-md-8.hidden id='stats-table'
+                                    ;show stats button
+                                    %a href='/stats?file_name={{ f.file_name }}'
+                                        %span.glyphicon.glyphicon-stats << Stats
+        
+        %div.row-fluid
+            %div.col-md-12.hidden id='content-table'
 
+    ;upload form
     %div.modal.fade tabindex='-1' role='dialog' id='upload-modal'
         %div.modal-dialog
             %div.model-content
@@ -32,7 +49,7 @@
                         %h4 << Select a file to upload
                 %div.modal-body
                     %form class='form-horizontal' action='/upload' method=post id='upload-form' enctype='multipart/form-data'
-                        %input type="file" name="file" id="file" class='form-control'
+                        %input type="file" name="file" id="file" class='form-control' accept=".csv"
                                 
                 %div.modal-footer
                     %button.btn.btn-default type='button' data-dismiss='modal'
