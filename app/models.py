@@ -14,7 +14,7 @@ class UploadFile(db.Model):
 
     Attributes:
         id (str): database primary key
-        file_name (str): sanitized file name
+        file_name (str): sanitized file name. NOTE: file_name must be unique.
         created_at (datetime): database sysdate record was created
 
     """
@@ -83,9 +83,9 @@ class UploadFile(db.Model):
         return self.df.head(rows_to_display)
 
     def agg_by_year(self):
-        """[summary]
+        """Returns CSV aggregated by year based on 'date' column.
 
         Returns:
-            [type]: [description]
+            DataFrame: Data frame aggregated by year and sorted descending by number of records.
         """
-        return self.df.groupby(self.df.date.dt.year).agg({'guid': 'count'}).sort_values(by='guid', ascending=False)
+        return self.df.groupby(self.df.date.dt.year).agg({'guid': 'count'}).sort_values(by='guid', ascending=False).reset_index()

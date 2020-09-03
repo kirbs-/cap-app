@@ -52,6 +52,9 @@ def upload():
 
             # save actual file to file system.
             # TODO validate file format.
+            # TODO there's two test cases here needing work. upload_file instance may save to db, but the actual
+            # file doesn't save to the FS (or vice versa). Need to stop execution in the first scenario and rollback
+            # the db save in the later. See file-upload.feature
             logging.debug(f'Saving {f.filename} to file system.')
             f.save(upload_file.absolute_path)
             logging.debug(f"Successfully saved {f.filename} to file system.")
