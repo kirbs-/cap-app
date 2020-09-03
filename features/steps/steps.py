@@ -37,8 +37,7 @@ Navigation helpers
 """
 @step('a user navigates to home page')
 def step_impl(context):
-    context.browser.get('http://localhost:5001/index')
-    # uploads_table = get_element(context.browser, id='uploads-table')
+    context.browser.get('http://localhost:5000/index') # TODO this should come from config
 
 @when('user clicks "{name}" button')
 def step_impl(context, name):

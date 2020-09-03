@@ -23,7 +23,7 @@
                         ; loop through all files. Display file name and options on hover
                         -for f in files:
                             %tr
-                                %td << {{ f.file_name }}
+                                %td.file-name << {{ f.file_name }}
                                 %td.text-right
                                     ;download button
                                     %a href='/download?file_name={{ f.file_name }}'

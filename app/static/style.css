@@ -13,3 +13,7 @@
 tr:hover > td > a > .file-options {
     display: inline;
 }
+
+.file-name {
+    padding: 12px 18px !important;
+}
