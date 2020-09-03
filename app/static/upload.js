@@ -52,7 +52,7 @@ $(document).ready(() => {
 
 let add_upload_file_row = html => {
     // append HTML partial to 'main-table'
-    $('#main-table').append(html);
+    $('#uploads-table').append(html);
 }
 
 let update_content_display = html => {

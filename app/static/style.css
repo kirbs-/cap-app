@@ -1,3 +1,15 @@
-.modal-dialog{
-    background: white
+.modal-dialog {
+    background: white;
+}
+
+.file-options {
+    display: none;
+}
+
+.file-options:hover {
+    color: gray;
+}
+
+tr:hover > td > a > .file-options {
+    display: inline;
 }

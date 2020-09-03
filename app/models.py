@@ -88,4 +88,6 @@ class UploadFile(db.Model):
         Returns:
             DataFrame: Data frame aggregated by year and sorted descending by number of records.
         """
-        return self.df.groupby(self.df.date.dt.year).agg({'guid': 'count'}).sort_values(by='guid', ascending=False).reset_index()
+        tmp_df = self.df.groupby(self.df.date.dt.year).agg({'guid': 'count'}).sort_values(by='guid', ascending=False).reset_index()
+        tmp_df.columns = ['year','guid']
+        return tmp_df

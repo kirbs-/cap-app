@@ -19,23 +19,23 @@
                         %tr
                             %th << File Name
                             %th 
-                    %tbody id-'uploads_table'
+                    %tbody id='uploads-table'
                         ; loop through all files. Display file name and options on hover
                         -for f in files:
                             %tr
                                 %td << {{ f.file_name }}
-                                %td
+                                %td.text-right
                                     ;download button
                                     %a href='/download?file_name={{ f.file_name }}'
-                                        %span.glyphicon.glyphicon-download-alt << Download
+                                        %span.glyphicon.glyphicon-download-alt.file-options.btn << Download
                                     
                                     ;show csv table button
                                     %a href='/display-csv/{{ f.file_name }}'
-                                        %span.glyphicon.glyphicon-th << Display
+                                        %span.glyphicon.glyphicon-th.file-options.btn << Display
 
                                     ;show stats button
                                     %a href='/stats/{{ f.file_name }}'
-                                        %span.glyphicon.glyphicon-stats << Stats
+                                        %span.glyphicon.glyphicon-stats.file-options.btn << Stats
         
         %div.row-fluid
             %div.col-md-12.hidden id='content-table'
