@@ -5,10 +5,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 # from flask.ext.heroku import Heroku
 
+
 # Load flask app from config.py
 app = Flask(__name__)
 app.config.from_object('config')
-app.secret_key = 'Wdj5ccVm4pGbDy' # TODO change in prod
 
 # Setup db
 db = SQLAlchemy(app)

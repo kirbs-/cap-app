@@ -16,6 +16,9 @@ COPY config.py .
 COPY database database/.
 COPY migrations migrations/.
 
+# make upload directory
+RUN mkdir /uploads
+
 # Setup flask
 ENV username=dummy
 ENV FLASK_ENV=production
