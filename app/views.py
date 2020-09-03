@@ -64,11 +64,12 @@ def upload():
         
         return render_template('file-table-row.haml', files=[upload_file]) # pass table row partial
 
+
 @app.route('/download')
 def download():
     """Downloads requested file to browser.
 
-    Example of using a query string parameters.
+    Example of using a query string parameter.
 
     Example:
         /download?file_name=example.csv
@@ -77,6 +78,9 @@ def download():
     file_name = request.args.get('file_name')
     if file_name:
         return send_file(models.UploadFile.find_by_name(file_name).absolute_path, as_attachment=True, attachment_filename=file_name)
+    else:
+        # this shouldn't happen, but let's log just in case.
+        logging.info("Download requested without file name.")
 
 
 @app.route('/display-csv/<file_name>')
